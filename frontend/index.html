@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Application Tracker</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar"><div><span class="brand-mark">JT</span><strong>JobTrack</strong></div><div id="userArea"><span class="muted">Keep your search organized</span></div></header>
+  <main class="container">
+    <section id="authView" class="auth-layout">
+      <div class="hero"><p class="eyebrow">YOUR NEXT OPPORTUNITY</p><h1>A clearer path to your next role.</h1><p>Track applications, interviews, follow-ups and outcomes in one simple workspace.</p><div class="hero-pills"><span>Applications</span><span>Interviews</span><span>Follow-ups</span></div></div>
+      <div class="panel auth-panel"><div class="tabs"><button class="tab active" id="loginTab">Login</button><button class="tab" id="registerTab">Create account</button></div>
+        <form id="authForm"><div id="nameField" class="field hidden"><label>Name</label><input id="name" autocomplete="name"></div><div class="field"><label>Email</label><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input id="password" type="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters"></div><button class="primary full" id="authSubmit">Login</button><p id="authMessage" class="message"></p></form>
+      </div>
+    </section>
+    <section id="appView" class="hidden">
+      <div class="page-heading"><div><p class="eyebrow">OVERVIEW</p><h1>Your job search</h1><p class="muted">A little progress every day adds up.</p></div><button class="outline" id="logoutBtn">Log out</button></div>
+      <div id="stats" class="stats-grid"></div>
+      <div class="panel filters"><div class="section-heading"><div><h2>Applications</h2><p class="muted">Search, filter and manage your opportunities.</p></div><button class="primary" id="addBtn">+ Add application</button></div>
+        <div class="filter-row"><input id="searchCompany" placeholder="Company"><input id="searchTitle" placeholder="Job title"><select id="statusFilter"><option value="">All statuses</option><option>SAVED</option><option>APPLIED</option><option>SCREENING</option><option>INTERVIEW</option><option>OFFER</option><option>ACCEPTED</option><option>REJECTED</option><option>WITHDRAWN</option></select><button class="outline" id="filterBtn">Apply filters</button><button class="text-btn" id="clearBtn">Clear</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Company / role</th><th>Location</th><th>Applied</th><th>Status</th><th>Actions</th></tr></thead><tbody id="applicationRows"><tr><td colspan="5">Loading...</td></tr></tbody></table></div><div class="pagination"><span id="pageInfo" class="muted"></span><div><button class="outline small" id="prevBtn">Previous</button> <button class="outline small" id="nextBtn">Next</button></div></div>
+      </div>
+      <div class="lower-grid"><div class="panel"><h2>Upcoming interviews</h2><div id="interviewList" class="simple-list"></div></div><div class="panel"><h2>Upcoming follow-ups</h2><div id="followupList" class="simple-list"></div></div></div>
+    </section>
+  </main>
+  <dialog id="applicationDialog"><form id="applicationForm" method="dialog"><div class="dialog-heading"><div><p class="eyebrow">OPPORTUNITY</p><h2 id="dialogTitle">Add application</h2></div><button type="button" class="icon-btn" id="closeDialog">✕</button></div><input type="hidden" id="applicationId"><div class="form-grid">
+    <div class="field"><label>Company *</label><input id="company_name" required maxlength="160"></div><div class="field"><label>Job title *</label><input id="job_title" required maxlength="160"></div>
+    <div class="field"><label>Location *</label><input id="location" required value="Hyderabad"></div><div class="field"><label>Employment type</label><select id="employment_type"><option>Full Time</option><option>Part Time</option><option>Contract</option><option>Internship</option><option>Remote</option></select></div>
+    <div class="field"><label>Source</label><select id="source"><option>LinkedIn</option><option>Company Website</option><option>Referral</option><option>Job Board</option><option>Recruiter</option><option>Other</option></select></div><div class="field"><label>Status</label><select id="appStatus"><option>SAVED</option><option>APPLIED</option><option>SCREENING</option><option>INTERVIEW</option><option>OFFER</option><option>ACCEPTED</option><option>REJECTED</option><option>WITHDRAWN</option></select></div>
+    <div class="field"><label>Applied date *</label><input id="applied_date" type="date" required></div><div class="field"><label>Job URL</label><input id="job_url" type="url" placeholder="https://..."></div><div class="field"><label>Minimum salary (annual)</label><input id="salary_min" type="number" min="0"></div><div class="field"><label>Maximum salary (annual)</label><input id="salary_max" type="number" min="0"></div><div class="field full-span"><label>Notes / description</label><textarea id="description" rows="3"></textarea></div>
+  </div><p id="formMessage" class="message"></p><div class="dialog-actions"><button type="button" class="outline" id="cancelDialog">Cancel</button><button class="primary" id="saveApplication">Save application</button></div></form></dialog>
+  <div id="toast" role="status"></div><script src="/app.js"></script>
+</body></html>

@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "Job Application Tracker",
+    "description": "Starter API collection. Register/login first, then set the access token variable.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key":"baseUrl","value":"http://127.0.0.1:8000"},{"key":"token","value":""}],
+  "item": [
+    {"name":"Health","request":{"method":"GET","url":"{{baseUrl}}/health"}},
+    {"name":"Register","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Anil Kumar\",\"email\":\"anil@example.com\",\"password\":\"Password@123\"}"},"url":"{{baseUrl}}/auth/register"}},
+    {"name":"Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"email\":\"anil@example.com\",\"password\":\"Password@123\"}"},"url":"{{baseUrl}}/auth/login"}},
+    {"name":"Create application","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer {{token}}"}],"body":{"mode":"raw","raw":"{\"company_name\":\"TCS\",\"job_title\":\"Python Developer\",\"location\":\"Hyderabad\",\"employment_type\":\"Full Time\",\"source\":\"LinkedIn\",\"applied_date\":\"2026-10-01\",\"status\":\"SAVED\"}"},"url":"{{baseUrl}}/applications"}},
+    {"name":"List applications","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/applications?page=1&limit=10"}},
+    {"name":"Dashboard","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/dashboard"}}
+  ]
+}
